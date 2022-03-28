@@ -1,0 +1,37 @@
+* {
+    font-size: 13px;
+}
+
+.window {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.window-body {
+    height: 100%
+}
+
+.button-settings {
+    width: 33%;
+    float: right;
+}
+
+.heading-container {
+    width: fit-content;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.heading-container * {
+    text-align: center;
+}
+
+h2:after {
+    content: '>';
+    margin-left: 10px;
+}
