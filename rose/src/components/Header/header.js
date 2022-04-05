@@ -2,10 +2,10 @@ import React from "react";
 
 const Header = () => {
     return (
-        <div className="title-bar">
-            <div className="title-bar-text">Welcome, Artyom</div>
-            <div className="title-bar-controls">
-                <button aria-label="Help"></button>
+        <div className="bg-dark row py-2">
+            <div className="col text-left align-self-center">Welcome, Artyom</div>
+            <div className="col text-end">
+                <button className="btn btn-secondary" aria-label="help">Помощь</button>
             </div>
         </div>
     )

@@ -4,23 +4,33 @@ import Footer from '../Footer'
 
 import './app.css'
 
-import "98.css";
-import "normalize.css"
+// import "normalize.css"
 
 const App = () => {
-    const styles = {'margin': '32px', 'width': '250px'}
+    // const styles = {'margin': '32px', 'width': '250px'};
     return (
-        <div className="window">
-            <Header/>
-                <div className="window-body">
-                    <button aria-label="Settings" className="button-settings">Настройки</button>
-                    <div className="heading-container">
-                        <h3>Мои проекты:</h3>
-                        <h2>Учу React</h2>
-                        {/* <button autoFocus>Учу React</button> */}
-                    </div>
+        <div className="container">
+{/* HEADER */}
+                <Header/>
+{/* MAIN PAGE                 */}
+                
+                <div className="col-sm-4 text-center">
+                    <h3>Мои проекты:</h3>
+                    <h2>Учу React</h2>
                 </div>
+            
+
+            <div className="window-body">
+                <button aria-label="Settings" className="button-settings">Настройки</button>
+                <div className="heading-container">
+                    <h3>Мои проекты:</h3>
+                    <h2>Учу React</h2>
+                    {/* <button autoFocus>Учу React</button> */}
+                </div>
+            </div>
+{/* FOOTER             */}
             <Footer/>
+
         </div>
     )
 }
