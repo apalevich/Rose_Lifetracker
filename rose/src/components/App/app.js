@@ -7,28 +7,32 @@ import './app.css'
 // import "normalize.css"
 
 const App = () => {
-    // const styles = {'margin': '32px', 'width': '250px'};
     return (
-        <div className="container">
-{/* HEADER */}
-                <Header/>
-{/* MAIN PAGE                 */}
-                
-                <div className="col-sm-4 text-center">
-                    <h3>Мои проекты:</h3>
-                    <h2>Учу React</h2>
-                </div>
-            
+        <div className="container-fluid d-flex flex-column vh-100">
 
-            <div className="window-body">
-                <button aria-label="Settings" className="button-settings">Настройки</button>
-                <div className="heading-container">
-                    <h3>Мои проекты:</h3>
-                    <h2>Учу React</h2>
-                    {/* <button autoFocus>Учу React</button> */}
+            <Header/>
+
+            <div className="row vh-100">
+                <div className="col-12 text-center py-5 align-self-center">
+                    <div className="py-5">
+                        <h1>Мои проекты:</h1>
+                    </div>
+                    <div  className="pb-5">
+
+                        <div className="card text-white bg-success mb-3">
+                            <div className="card-header">
+                                <h4 className="card-title">Учить React</h4>
+                            </div>
+                            <div className="card-body">
+                                <p className="card-text">February-April '22</p>
+                            </div>
+                        </div>
+                    
+                    </div>
+                <a aria-label="Settings" className="link link-primary text-center">Настройки</a>
                 </div>
-            </div>
-{/* FOOTER             */}
+            </div>    
+            
             <Footer/>
 
         </div>
