@@ -2,12 +2,11 @@ import React from "react";
 import Header from '../Header'
 import Footer from '../Footer'
 import SettingsMenu from "../settings";
+import Dashboard from "../Dashboard";
 
 import './app.css'
 
 // import "normalize.css"
-
-const mode = 'settings';
 
 const App = () => {
     const main = (
@@ -42,7 +41,8 @@ const App = () => {
 
             <Header/>
 
-                {settings}
+                {/* {main} */}
+                <Dashboard/>
             
             <Footer/>
 
