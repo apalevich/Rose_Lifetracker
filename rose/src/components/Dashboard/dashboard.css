@@ -1,0 +1,10 @@
+.bar-chart-decoration {
+    width: 250px;
+    height: 200px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.bar {
+    fill: purple;
+}

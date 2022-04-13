@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import * as d3 from "d3";
+
+import './dashboard.css'
 
 const weekData = [
   {
@@ -148,35 +150,42 @@ const sumTrackedTime = (arr) => arr.reduce((acc, cur) => acc+cur, 0);
 
 const curTypeVsTarget = weekData[0].activities
 .reduce((acc, cur) => {
-    if (!acc[cur.type]) acc[cur.type] = 0
-    acc[cur.type] += sumTrackedTime(cur.trackedTime)
+    if (acc.find(el => el.label === cur.type)) {
+        const idx = acc.findIndex(el => el.label === cur.type);
+        acc[idx].value += sumTrackedTime(cur.trackedTime)
+    } else {
+        acc.push({ label: cur.type, value: sumTrackedTime(cur.trackedTime) });
+    }
     return acc
-}, {})
-
-
+}, [])
 
 const Pulse = () => {
-    const data  = weekData[0];
+    useEffect(() => {
+        const container = d3.select('.bar-chart')
+        .classed('bar-chart-decoration', true)
+
+        container
+        .selectAll('.bar')
+        .data(curTypeVsTarget)
+        .enter()
+        .append('rect')
+        .classed('bar', true)
+        .attr('width', 50)
+        .attr('height', data=> data.value/20)
+
+
+    }, curTypeVsTarget)
 
     console.log(curTypeVsTarget);
-
-    d3
-    .select('.bar-chart')
-    .selectAll('p')
-    .data(curTypeVsTarget)
-    .enter()
-    .append('p')
-    .text(data => data);
 
     return (
         <div className="row">
             <div className="col-12 border p-3">
-                <h3 className="text-decoration-underline">Week: {data.number}</h3>
+                <h3 className="text-decoration-underline">Week: {weekData[0].number}</h3>
                 <div>
                     <h3>Absolute stats</h3>
-                    <div className="bar-chart"></div>
+                    <svg className="bar-chart"></svg>
                 </div>
-
             </div>
         </div>
     );
@@ -189,5 +198,7 @@ const Dashboard = () => {
     </div>
   );
 };
+
+
 
 export default Dashboard;
