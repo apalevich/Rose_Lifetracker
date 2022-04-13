@@ -144,15 +144,37 @@ const projectSettings = {
     ]
 };
 
+const sumTrackedTime = (arr) => arr.reduce((acc, cur) => acc+cur, 0);
+
+const curTypeVsTarget = weekData[0].activities
+.reduce((acc, cur) => {
+    if (!acc[cur.type]) acc[cur.type] = 0
+    acc[cur.type] += sumTrackedTime(cur.trackedTime)
+    return acc
+}, {})
+
+
+
 const Pulse = () => {
     const data  = weekData[0];
+
+    console.log(curTypeVsTarget);
+
+    d3
+    .select('.bar-chart')
+    .selectAll('p')
+    .data(curTypeVsTarget)
+    .enter()
+    .append('p')
+    .text(data => data);
+
     return (
         <div className="row">
             <div className="col-12 border p-3">
                 <h3 className="text-decoration-underline">Week: {data.number}</h3>
                 <div>
                     <h3>Absolute stats</h3>
-
+                    <div className="bar-chart"></div>
                 </div>
 
             </div>
