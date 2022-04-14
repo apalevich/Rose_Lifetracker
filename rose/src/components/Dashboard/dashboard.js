@@ -161,18 +161,27 @@ const curTypeVsTarget = weekData[0].activities
 
 const Pulse = () => {
     useEffect(() => {
+
+        const xScale = d3
+                        .scaleBand()
+                        .domain(curTypeVsTarget.map(el => el.label))
+                        .rangeRound([0, 250])
+                        .padding(0.1);
+        const yScale = d3.scaleLinear().domain([0,2300]).range([200,0]);
+
         const container = d3.select('.bar-chart')
         .classed('bar-chart-decoration', true)
 
         container
-        .selectAll('.bar')
-        .data(curTypeVsTarget)
-        .enter()
-        .append('rect')
-        .classed('bar', true)
-        .attr('width', 50)
-        .attr('height', data=> data.value/20)
-
+          .selectAll(".bar")
+          .data(curTypeVsTarget)
+          .enter()
+          .append("rect")
+          .classed("bar", true)
+          .attr("width", xScale.bandwidth())
+          .attr("height", (data) => 200 - yScale(data.value))
+          .attr("x", (data) => xScale(data.label))
+          .attr("y", (data) => yScale(data.value));
 
     }, curTypeVsTarget)
 
